@@ -16,13 +16,23 @@
  */
 package org.jboss.as.quickstarts.kitchensink.service;
 
-import org.jboss.as.quickstarts.kitchensink.model.Member;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Properties;
+import java.util.logging.Logger;
 
+import javax.batch.operations.JobOperator;
+import javax.batch.runtime.BatchRuntime;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.persistence.EntityManager;
-import java.util.logging.Logger;
+
+import org.jboss.as.quickstarts.kitchensink.model.Member;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
@@ -40,6 +50,12 @@ public class MemberRegistration {
     public void register(Member member) throws Exception {
         log.info("Registering " + member.getName());
         em.persist(member);
+        
+        
+        // start batch job to fetch missing avatars
+        JobOperator jo = BatchRuntime.getJobOperator();
+        jo.start("lookupgithub", new Properties());
+        
         memberEventSrc.fire(member);
     }
 }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
     JBoss, Home of Professional Open Source
     Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
@@ -67,6 +66,10 @@
         <h:dataTable var="_member" value="#{members}"
             rendered="#{not empty members}"
             styleClass="simpletablestyle">
+            <h:column>
+            	<f:facet name="header">Avatar</f:facet>
+                <img height="80" width="80" src="#{memberRepository.getAvatarURL(_member.id)}"/>
+            </h:column>
             <h:column>
                 <f:facet name="header">Id</f:facet>
                 #{_member.id}
