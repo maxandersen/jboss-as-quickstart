@@ -16,8 +16,10 @@
  */
 package org.jboss.as.quickstarts.kitchensink.model;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.jboss.as.quickstarts.kitchensink.data.MemberRepository;
 
 @SuppressWarnings("serial")
 @Entity
@@ -58,7 +61,7 @@ public class Member implements Serializable {
     @Digits(fraction = 0, integer = 12)
     @Column(name = "phone_number")
     private String phoneNumber;
-
+    
     public Long getId() {
         return id;
     }
@@ -90,4 +93,5 @@ public class Member implements Serializable {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
 }

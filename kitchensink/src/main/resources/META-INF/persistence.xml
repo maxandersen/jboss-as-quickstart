@@ -23,13 +23,17 @@
    <persistence-unit name="primary">
       <!-- If you are running in a production environment, add a managed 
          data source, this example data source is just for development and testing! -->
-      <!-- The datasource is deployed as WEB-INF/kitchensink-quickstart-ds.xml, you
-         can find it in the source at src/main/webapp/WEB-INF/kitchensink-quickstart-ds.xml -->
-      <jta-data-source>java:jboss/datasources/KitchensinkQuickstartDS</jta-data-source>
+      <!-- The datasource is using Java EE 7 default datasource; thus no need to specify it here -->
+      <!-- Note: for WildFly 8 Beta1 the following needs to be added to standalone.xml for this to work.
+         <subsystem xmlns="urn:jboss:domain:jpa:1.1">
+            <jpa default-datasource="java:jboss/datasources/ExampleDS" default-extended-persistence-inheritance="DEEP"/>
+        </subsystem>
+       -->
       <properties>
-         <!-- Properties for Hibernate -->
-         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
-         <property name="hibernate.show_sql" value="false" />
+          <!-- Property for schema generation based on model -->
+          <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+          <!-- Property for batch loading data into database -->
+         <property name="javax.persistence.sql-load-script-source" value="import.sql"/>
       </properties>
    </persistence-unit>
 </persistence>

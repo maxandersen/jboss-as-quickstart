@@ -18,19 +18,25 @@ package org.jboss.as.quickstarts.kitchensink.data;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jboss.as.quickstarts.kitchensink.model.Member;
 
 @ApplicationScoped
+@Named
 public class MemberRepository {
 
     @Inject
     private EntityManager em;
+	private Map<Long, String> avatars = new HashMap<Long, String>();
 
     public Member findById(Long id) {
         return em.find(Member.class, id);
@@ -56,5 +62,13 @@ public class MemberRepository {
         // criteria.select(member).orderBy(cb.asc(member.get(Member_.name)));
         criteria.select(member).orderBy(cb.asc(member.get("name")));
         return em.createQuery(criteria).getResultList();
+    }
+    
+    public void addAvatarURL(Long id, String url) {
+    	avatars.put(id, url);
+    }
+    
+    public String getAvatarURL(Long id) {
+    	return avatars.get(id);
     }
 }
