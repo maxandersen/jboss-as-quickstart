@@ -26,6 +26,7 @@ import javax.inject.Named;
 
 import org.jboss.as.quickstarts.kitchensink.model.Member;
 import org.jboss.as.quickstarts.kitchensink.service.MemberRegistration;
+import org.jboss.as.quickstarts.kitchensink.websocket.ClientRegistry;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
@@ -39,6 +40,9 @@ public class MemberController {
 
     @Inject
     private MemberRegistration memberRegistration;
+    
+    @Inject
+    private ClientRegistry cr;
 
     @Produces
     @Named
@@ -52,10 +56,12 @@ public class MemberController {
     public void register() throws Exception {
         try {
             memberRegistration.register(newMember);
+            cr.sendRegisteredMessage(newMember);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
             facesContext.addMessage(null, m);
             initNewMember();
         } catch (Exception e) {
+            e.printStackTrace();
             String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
             facesContext.addMessage(null, m);
