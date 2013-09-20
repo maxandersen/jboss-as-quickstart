@@ -16,10 +16,8 @@
  */
 package org.jboss.as.quickstarts.kitchensink.model;
 
-import java.beans.Transient;
 import java.io.Serializable;
 
-import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +33,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.jboss.as.quickstarts.kitchensink.data.MemberRepository;
 
 @SuppressWarnings("serial")
 @Entity
@@ -44,7 +41,8 @@ import org.jboss.as.quickstarts.kitchensink.data.MemberRepository;
 public class Member implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY) // using identity to avoid unique key constraint when more than one element in the initial db
+    // using identity to avoid unique key constraint when more than one element in the initial db
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @NotNull

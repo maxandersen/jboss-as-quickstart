@@ -16,9 +16,6 @@
  */
 package org.jboss.as.quickstarts.kitchensink.service;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -27,9 +24,6 @@ import javax.batch.runtime.BatchRuntime;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 import javax.persistence.EntityManager;
 
 import org.jboss.as.quickstarts.kitchensink.model.Member;
