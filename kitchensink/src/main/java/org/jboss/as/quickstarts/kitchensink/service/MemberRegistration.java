@@ -16,9 +16,6 @@
  */
 package org.jboss.as.quickstarts.kitchensink.service;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Properties;
 import java.util.logging.Logger;
 

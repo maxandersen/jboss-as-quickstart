@@ -2,7 +2,7 @@ kitchensink: Assortment of technologies including Arquillian
 ========================
 Author: Pete Muir
 Level: Intermediate
-Technologies: CDI, JSF, JPA, EJB, JPA, JAX-RS, BV
+Technologies: CDI, JSF, JPA, EJB, JPA, JAX-RS, BV, JSONP, Batch
 Summary: An example that incorporates multiple technologies
 Target Product: EAP
 Source: <https://github.com/jboss-jdf/jboss-as-quickstart/>
@@ -12,16 +12,16 @@ What is it?
 
 This is your project! It is a sample, deployable Maven 3 project to help you get your foot in the door developing with Java EE 6 on JBoss Enterprise Application Platform 6 or JBoss AS 7. 
 
-This project is setup to allow you to create a compliant Java EE 6 application using JSF 2.0, CDI 1.0, EJB 3.1, JPA 2.0 and Bean Validation 1.0. It includes a persistence unit and some sample persistence and transaction code to introduce you to database access in enterprise Java. 
+This project is setup to allow you to create a compliant Java EE 7 application using JSF 2.0, CDI 1.0, EJB 3.1, JPA 2.1, Bean Validation 1.0, Batch 1.0 and JSON-P 1.0. It includes a persistence unit and some sample persistence and transaction code to introduce you to database access in enterprise Java. 
 
 There is a tutorial for this quickstart in the [Getting Started Developing Applications Guide](http://www.jboss.org/jdf/quickstarts/jboss-as-quickstart/guide/KitchensinkQuickstart/).
 
 System requirements
 -------------------
 
-All you need to build this project is Java 6.0 (Java SDK 1.6) or better, Maven 3.0 or better.
+All you need to build this project is Java 7.0 (Java SDK 1.7) or better, Maven 3.0 or better.
 
-The application this project produces is designed to be run on JBoss Enterprise Application Platform 6 or JBoss AS 7. 
+The application this project produces is designed to be run on WildFly 8 or Glassfish 4.
 
  
 Configure Maven

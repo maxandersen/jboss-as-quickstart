@@ -3,14 +3,10 @@ package org.jboss.as.quickstarts.kitchensink.batch;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import javax.batch.api.AbstractBatchlet;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.json.Json;

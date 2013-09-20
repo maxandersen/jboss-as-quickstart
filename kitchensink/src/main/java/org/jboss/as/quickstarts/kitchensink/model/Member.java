@@ -24,6 +24,7 @@ import javax.json.JsonObjectBuilder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -44,7 +45,8 @@ import org.jboss.as.quickstarts.kitchensink.data.MemberRepository;
 public class Member implements Serializable {
 
     @Id
-    @GeneratedValue
+    // using identity to avoid unique key constraint when more than one element in the initial db
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
