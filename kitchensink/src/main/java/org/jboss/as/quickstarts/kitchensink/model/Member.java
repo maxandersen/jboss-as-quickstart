@@ -20,6 +20,7 @@ import java.beans.Transient;
 import java.io.Serializable;
 
 import javax.inject.Inject;
+import javax.json.JsonObjectBuilder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -94,4 +95,9 @@ public class Member implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public void writeTo(JsonObjectBuilder jobj) {
+        jobj.add("name", getName());
+        jobj.add("email", getEmail());
+        jobj.add("phoneNumber", getPhoneNumber());
+    }
 }
