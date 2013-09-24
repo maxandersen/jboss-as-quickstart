@@ -16,10 +16,11 @@ var MembersModel = function(members) {
         self.websocket = new WebSocket(getRootUri() + "/jboss-as-kitchensink/registration");
         self.websocket.onopen = function (evt) {
             console.log ('open');
-            window.mm.websocket.send("sending");    
+            window.mm.websocket.send("sending");   
+            console.log('sent');
         };
         self.websocket.onmessage = function (evt) {
-            console.log(evt);
+        	console.log(evt);
             var m = new Member();
             var dataobj = JSON.parse(evt.data);
             m.name(dataobj.name);

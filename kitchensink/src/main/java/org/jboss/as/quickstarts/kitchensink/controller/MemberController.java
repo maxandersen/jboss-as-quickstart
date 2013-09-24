@@ -26,7 +26,7 @@ import javax.inject.Named;
 
 import org.jboss.as.quickstarts.kitchensink.model.Member;
 import org.jboss.as.quickstarts.kitchensink.service.MemberRegistration;
-import org.jboss.as.quickstarts.kitchensink.websocket.ClientRegistry;
+import org.jboss.as.quickstarts.kitchensink.websocket.RegistrationEndpoint;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
@@ -42,7 +42,7 @@ public class MemberController {
     private MemberRegistration memberRegistration;
     
     @Inject
-    private ClientRegistry cr;
+    private RegistrationEndpoint cr;
 
     @Produces
     @Named
