@@ -97,9 +97,5 @@ public class Member implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public void writeTo(JsonObjectBuilder jobj) {
-        jobj.add("name", getName());
-        jobj.add("email", getEmail());
-        jobj.add("phoneNumber", getPhoneNumber());
-    }
+   
 }

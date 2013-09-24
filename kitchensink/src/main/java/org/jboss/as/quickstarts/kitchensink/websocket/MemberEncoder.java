@@ -36,15 +36,19 @@ class MemberEncoder implements Encoder.TextStream<Member>  {
     }
 
     @Override
-    public void encode(Member object, Writer writer) throws EncodeException, IOException {
-        final JsonObjectBuilder jobj = Json.createObjectBuilder();
-        object.writeTo(jobj);
-        try (JsonWriter jw = factory.createWriter(writer)) {
-            jw.writeObject(jobj.build());
+    public void encode(Member m, Writer writer) throws EncodeException, IOException {
+        final JsonObjectBuilder builder = Json.createObjectBuilder();
+
+        builder.add("name", m.getName());
+    	builder.add("email", m.getEmail());
+    	builder.add("phoneNumber", m.getPhoneNumber());
+   
+    	try (JsonWriter jw = factory.createWriter(writer)) {
+            jw.writeObject(builder.build());
         }
     }
 
-    @Override
+	@Override
     public void init(EndpointConfig config) {
     }
 

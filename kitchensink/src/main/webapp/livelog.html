@@ -5,24 +5,33 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    <body>
-        Live log...
-        
-        <div>
-            <ul data-bind="foreach: members">
-                <li>
-                    <span data-bind="text: name"></span>,
-                    <span data-bind="text: email"></span>,  
-                    <span data-bind="text: phoneNumber"></span>
-                </li>
-            </ul>
-        </div>
-        <script type="text/javascript" src="js/libs/knockout/knockout-min.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-    </body>
+<head>
+<title>Live Log of Members</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link href="resources/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	Live log of Added members:
+
+	<table class="simpletablestyle">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: members">
+			<tr>
+				<td data-bind="text: name"></td>
+				<td data-bind="text: email"></td>
+				<td data-bind="text: phoneNumber"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="js/libs/knockout/knockout-min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
 </html>
